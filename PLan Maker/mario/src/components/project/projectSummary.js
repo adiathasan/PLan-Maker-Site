@@ -1,11 +1,11 @@
 import React from 'react';
 
-const PLanSummary = () => {
-    return (
+const PLanSummary = ({plans}) => {
+        return (
         <div>          
             <div className='card mb-2'>
                 <div className="card-header">
-                    <h6 className='text-center'>Plan Title</h6>
+                    <h6 className='text-center'>{plans.title}</h6>
                 </div>
                 <div className="card-body">
                     <p>

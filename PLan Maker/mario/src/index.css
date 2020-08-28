@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #cfe9dc;
+  background-color: #a3cdf5;
+
 }
 
 code {
@@ -15,5 +16,7 @@ code {
 
 
 .bg-custom{
-  background-color: #1aecec;
+  background-color: #faea0e;
 }
+
+

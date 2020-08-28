@@ -24,8 +24,8 @@ export class SignUp extends Component {
 
     render() {
         return (
-            <div className='container mt-5'>
-                <h3 className='text-center border-bottom mb-5'>Sign Up</h3>
+            <div className='container mt-4'>
+                <h3 className='text-center border-bottom text-dark mb-4 p-2'>Sign Up</h3>
                 <div className="row">
                     <div className="col-8 mx-auto bg-light p-3  rounded shadow">
                         <form className='p-4' onSubmit={this.handleSubmit}>

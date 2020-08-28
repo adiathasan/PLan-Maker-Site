@@ -1,12 +1,19 @@
 import React from 'react';
-import PlanSummary from './projectSummary'
+import PLanSummary from './projectSummary';
 
-const PLanList = () =>{
+const PLanList = ({plans}) =>{
+
     return(
        <div>
-            <PlanSummary/>
-            <PlanSummary/>
-            <PlanSummary/>
+           
+            { 
+
+                plans && plans.map(element => {
+                    return <PLanSummary plans={element} key={plans.id}/>
+
+                })
+
+            }
        </div>
     )
 }
