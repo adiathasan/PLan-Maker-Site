@@ -6,10 +6,10 @@ const SignedInBar = () => {
 
             <ul className=" d-flex nav">
                 <li className="nav-item">
-                    <NavLink className="nav-link" to="/createPlan">Make Plane</NavLink>
+                <NavLink className="nav-link text-light" to="/createPlan">Make Plane</NavLink>
                 </li>
                 <li className="nav-item">
-                <NavLink className="nav-link" to="/login">Login </NavLink>
+                <NavLink className="nav-link text-light" to="/login">Login </NavLink>
                 </li>
             </ul> 
 

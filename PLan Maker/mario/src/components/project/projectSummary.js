@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const PLanSummary = ({plans}) => {
         return (
@@ -8,12 +9,16 @@ const PLanSummary = ({plans}) => {
                     <h6 className='text-center'>{plans.title}</h6>
                 </div>
                 <div className="card-body">
-                    <p>
-                        created by admin shit
-                    </p>
-                    <p className='text-muted'>
-                        3rd sep 2020
-                    </p>
+                    <Link to={`/plan/${plans.id}`} className=' nav-link text-dark'>
+                    
+                        <p>
+                            created by {plans.authFirstName}
+                        </p>
+                        <p className='text-muted'>
+                            3rd sep 2020
+                        </p>
+                    
+                    </Link>
                 </div>
             </div>
         </div>

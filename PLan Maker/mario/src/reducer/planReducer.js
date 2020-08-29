@@ -6,8 +6,18 @@ const initState = {
     ]
 }
 
-const planReducer = (state = initState, action) => {
-    return state
+
+const planReducer = (state=initState, action) =>{
+    switch(action.type){
+        case 'CREATE_PLAN':
+            console.log('>>', action.plan)
+            return state
+        case 'CREATE_PLAN_ERROR':
+            console.log(action.type, action.err)
+        default:
+            return state
+    }
 }
+
 
 export default planReducer

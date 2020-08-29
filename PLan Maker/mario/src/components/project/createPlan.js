@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
-import {createPlan} from '../../actions/planActions'
+import {planCreater} from '../../actions/planActions'
 import {connect} from 'react-redux'
 export class CreatePlan extends Component {
 
+    state = {
+        title: '',
+        content: '',
+    }
 
     handleSubmit = (e) => {
         e.preventDefault()
         e.target.reset()
+        this.props.createPlan(this.state)
     }
 
     handleChange = (e) => {
@@ -41,10 +46,10 @@ export class CreatePlan extends Component {
 
 const mapDispatchToProp = (dispatch)=>{
     return {
-        createPlan: (plan)=>{
-            return ''
-        }
+        createPlan: (plan) => dispatch(planCreater(plan))
+            
+
     }
 }
 
-export default connect(mapDispatchToProp)(CreatePlan) 
+export default connect(null, mapDispatchToProp)(CreatePlan) 
