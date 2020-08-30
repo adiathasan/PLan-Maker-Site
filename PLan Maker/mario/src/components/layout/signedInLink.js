@@ -7,6 +7,7 @@ const SignedInBar = (props) => {
     const handleLogout = (e) =>{
         props.signOutFunc()
     }
+    const {initials} = props
     return (
             <ul className=" d-flex nav">
                 <li className="nav-item">
@@ -16,7 +17,8 @@ const SignedInBar = (props) => {
                 <a className="nav-link text-light" onClick={handleLogout}>Logout </a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link text-light bg-danger rounded-pill d-inline-block " >AH</a>
+                <a className="nav-link text-light bg-danger rounded-pill d-inline-block " >
+                    {initials ? initials : <span className='text-danger'>A</span> }</a>
                 </li>
             </ul> 
 

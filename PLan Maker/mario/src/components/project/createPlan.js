@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {planCreater} from '../../actions/planActions'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom'
 export class CreatePlan extends Component {
 
     state = {
@@ -12,6 +13,7 @@ export class CreatePlan extends Component {
         e.preventDefault()
         e.target.reset()
         this.props.createPlan(this.state)
+        this.props.history.push('/')
     }
 
     handleChange = (e) => {
@@ -21,6 +23,8 @@ export class CreatePlan extends Component {
     }
 
     render() {
+        const {auth} = this.props
+        if (!auth.uid) return <Redirect to='/login'/>
         return (
             <div className='container mt-5'>
                 <h3 className='text-center border-bottom mb-5'>Add Your Plan</h3>
@@ -44,12 +48,19 @@ export class CreatePlan extends Component {
     }
 }
 
-const mapDispatchToProp = (dispatch)=>{
+const mapStateToProps = state =>{
+    return{
+        auth: state.firebase.auth
+    }
+}
+
+
+const mapDispatchToProps = (dispatch)=>{
     return {
-        createPlan: (plan) => dispatch(planCreater(plan))
+        createPlan: (plan) => dispatch(planCreater(plan)),
             
 
     }
 }
 
-export default connect(null, mapDispatchToProp)(CreatePlan) 
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePlan) 

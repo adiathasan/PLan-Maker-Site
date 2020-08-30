@@ -21,6 +21,7 @@ const store = createStore(rootReducer, compose(
 
 const rrfConfig = {
   userProfile: 'users',
+  useFirestoreForProfile: true
 }
 const rrfProps = {
   firebase,

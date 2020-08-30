@@ -1,3 +1,5 @@
+import { Redirect } from "react-router-dom"
+
 export const signInAction = (ema_pass) =>{
     return (dispatch, getState, {getFirebase})=>{
         const firebase = getFirebase()
@@ -7,6 +9,7 @@ export const signInAction = (ema_pass) =>{
             ).then(()=>{
                 dispatch({
                     type: 'LOGIN_SUCCESSFUL'
+                        
                 })
             }).catch(err =>{
                 dispatch({
@@ -25,6 +28,36 @@ export const signOutAction = () =>{
         .then(()=>{
             dispatch({
                 type: 'LOGED_OUT_USER',
+            })
+        })
+    }
+}
+
+
+export const signUpAction = (newUser) =>{
+    return (dispatch, getState, { getFirebase, getFirestore })=>{
+        const firebase = getFirebase()
+        const firestore = getFirestore()
+        firebase.auth().createUserWithEmailAndPassword(
+            newUser.email,
+            newUser.password
+        ).then((res)=>{
+            return firestore.collection('users').doc(
+                res.user.uid
+            ).set({
+                firstname: newUser.firstname,
+                lastname: newUser.lastname,
+                initials: newUser.firstname[0].toUpperCase() + newUser.lastname[0].toUpperCase(),
+                firstname: newUser.firstname,
+            })
+        }).then(()=>{
+            dispatch({
+                type: 'SIGNED_UP_USER'
+            })
+        }).catch((err)=>{
+            dispatch({
+                type: 'SIGNED_UP_USER_FAIL',
+                err
             })
         })
     }

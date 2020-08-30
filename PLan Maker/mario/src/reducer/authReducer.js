@@ -1,3 +1,5 @@
+import { Redirect } from "react-router-dom"
+
 const initState = {
     authErr: null
 }
@@ -7,7 +9,7 @@ const authReducer = (state = initState, action) =>{
         case 'LOGIN_FAILED':
             return {
                 ...state,
-                authErr: 'Invalid Email Or Password'
+                authErr: action.err.message
             }
         case 'LOGIN_SUCCESSFUL':
             return {
@@ -16,6 +18,17 @@ const authReducer = (state = initState, action) =>{
             }
         case 'LOGED_OUT_USER':
             console.log(action.type) 
+        case 'SIGNED_UP_USER':
+            console.log(action.type) 
+            return {
+                ...state,
+                authErr: null
+            }
+        case 'SIGNED_UP_USER_FAIL':
+            return {
+                ...state,
+                authErr: action.err.message
+            }
         default:
             return state
     }

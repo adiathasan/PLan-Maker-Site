@@ -2,10 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-
+import { Redirect } from 'react-router-dom'
+import moment from 'moment'
 
 function PlanDetail(props) {
-    const {plan} = props
+    const {plan, auth} = props
+    if (!auth.uid) return <Redirect to='/login' />
     if (plan){
         return (
             <div className='container m-5 mx-auto'>
@@ -23,13 +25,13 @@ function PlanDetail(props) {
                     </p>
                     </div>
                     <div className="card-body border-top">
-                        <p className='text-muted'>Posted by  <span className='text-dark'>{plan.authFirstName} {plan.authLastName}</span></p>
-                        {/* <p className='text-muted'>Posted on {plan.createdAt}
-                        </p> */}
+                        <p className='text-muted'>Posted by  <span className='text-info'> {plan.authFirstName} {plan.authLastName}</span></p>
+                        <p className='text-muted'>{moment(plan.createdAt.toDate()).calendar()}
+                        </p>
                     </div>
                 </div>
             </div>
-        )
+        ) 
 
     }else{
         return (
@@ -51,7 +53,9 @@ const mapStateToProps = (state, ownProps) =>{
     const plans = state.firestore.data.plans
     const plan = plans ? plans[id] : null
     return {
-        plan
+        plan,
+        auth: state.firebase.auth, 
+        profile: state.firebase.profile 
     }
 } 
 

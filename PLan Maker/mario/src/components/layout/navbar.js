@@ -3,12 +3,18 @@ import { NavLink, Link } from 'react-router-dom'
 import SignedInBar  from './signedInLink'
 import SignedOutBar  from './signedOutLink'
 import {connect}  from 'react-redux'
-
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 
 const Nav = (props) =>{
-    const {auth} = props
-    console.log(auth)
-    const links = auth.uid ? <SignedInBar /> : <SignedOutBar />
+    const {auth, usersId, init} = props
+    // let user;
+    // usersId && usersId.forEach(elem =>{
+    //     if(elem.id == auth.uid){
+    //         user = elem.initials
+    //     }
+    // })
+    const links = auth.uid ? <SignedInBar initials={auth.isLoaded &&  init.initials }/> : <SignedOutBar />
     return(
         <ul className="nav sticky-top container-fluid bg-dark shadow-sm nav-pills nav-fill">
             <li className='nav-link'>
@@ -32,10 +38,16 @@ const Nav = (props) =>{
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        usersId: state.firestore.ordered.users,
+        init: state.firebase.profile      
     }
 }
 
-export default connect(mapStateToProps)(Nav)
+export default compose(
+    firestoreConnect(() => ['users']),
+    connect(mapStateToProps)
+)(Nav)
 

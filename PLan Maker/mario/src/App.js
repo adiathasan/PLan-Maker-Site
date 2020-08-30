@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Nav from './components/layout/navbar'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Dashboard from './components/dashboard/dashboard'
-import PlanDetail from './components/project/projectDetails'
+import PlanDetail from './components/project/planDetails'
 import CreatePlan from './components/project/createPlan'
 import SignIn from './components/auth/signin'
 import SignUp from './components/auth/signup'
