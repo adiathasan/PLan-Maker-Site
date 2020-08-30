@@ -6,7 +6,7 @@ const SignedOutBar = () => {
 
         <ul className=" d-flex nav align-items-center">
             <li className="nav-item">
-                <NavLink className="nav-link text-light" to="/logout">Logout</NavLink>
+                <NavLink className="nav-link text-light" to="/login">Login</NavLink>
             </li>
             <li className="nav-item">
                 <NavLink className="nav-link text-light" to="/signup">Signup</NavLink>

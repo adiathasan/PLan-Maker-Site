@@ -19,7 +19,13 @@ export const signInAction = (ema_pass) =>{
 
 
 export const signOutAction = () =>{
-    return ()=>{
-        
+    return (dispatch, getState, { getFirebase })=>{
+        const firebase = getFirebase()
+        firebase.auth().signOut()
+        .then(()=>{
+            dispatch({
+                type: 'LOGED_OUT_USER',
+            })
+        })
     }
 }

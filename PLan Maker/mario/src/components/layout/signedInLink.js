@@ -1,19 +1,34 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { signOutAction } from '../../actions/authAction'
+import { connect }  from 'react-redux'
 
-const SignedInBar = () => {
+const SignedInBar = (props) => {
+    const handleLogout = (e) =>{
+        props.signOutFunc()
+    }
     return (
-
             <ul className=" d-flex nav">
                 <li className="nav-item">
                 <NavLink className="nav-link text-light" to="/createPlan">Make Plane</NavLink>
                 </li>
                 <li className="nav-item">
-                <NavLink className="nav-link text-light" to="/login">Login </NavLink>
+                <a className="nav-link text-light" onClick={handleLogout}>Logout </a>
+                </li>
+                <li className="nav-item">
+                <a className="nav-link text-light bg-danger rounded-pill d-inline-block " >AH</a>
                 </li>
             </ul> 
 
     )
 }
 
-export default SignedInBar
+const mapDispatchToProps = dispatch =>{
+    return{
+        signOutFunc: ()=> {
+            dispatch(signOutAction())
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignedInBar)

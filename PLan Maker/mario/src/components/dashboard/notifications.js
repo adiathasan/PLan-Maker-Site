@@ -4,7 +4,7 @@ import React from 'react';
 const Notifications = ()=>{
     return (
         <div className=' card shadow'>
-            <div className="card-header">
+            <div className="card-header bg-info text-light">
                 <h5>
                     Notifications
                 </h5>

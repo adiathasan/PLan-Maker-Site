@@ -3,8 +3,12 @@ import { NavLink, Link } from 'react-router-dom'
 import SignedInBar  from './signedInLink'
 import SignedOutBar  from './signedOutLink'
 import {connect}  from 'react-redux'
+
+
 const Nav = (props) =>{
-    console.log(props)
+    const {auth} = props
+    console.log(auth)
+    const links = auth.uid ? <SignedInBar /> : <SignedOutBar />
     return(
         <ul className="nav sticky-top container-fluid bg-dark shadow-sm nav-pills nav-fill">
             <li className='nav-link'>
@@ -18,11 +22,9 @@ const Nav = (props) =>{
             </li>
 
             <li className='nav-link text-light'>
-                <SignedInBar />
+                {auth.isLoaded && links}
             </li>
-            <li className='nav-link'>
-                <SignedOutBar />
-            </li>
+                     
         </ul> 
   
 
@@ -30,7 +32,6 @@ const Nav = (props) =>{
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         auth: state.firebase.auth
     }
