@@ -2,9 +2,10 @@ import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import SignedInBar  from './signedInLink'
 import SignedOutBar  from './signedOutLink'
+import {connect}  from 'react-redux'
 const Nav = (props) =>{
+    console.log(props)
     return(
-
         <ul className="nav sticky-top container-fluid bg-dark shadow-sm nav-pills nav-fill">
             <li className='nav-link'>
                 <ul className='nav'>
@@ -28,4 +29,12 @@ const Nav = (props) =>{
     )
 }
 
-export default Nav
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        auth: state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps)(Nav)
+

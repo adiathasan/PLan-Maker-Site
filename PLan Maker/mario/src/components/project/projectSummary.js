@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 const PLanSummary = ({plans}) => {
         return (
-        <div>          
-            <div className='card mb-2'>
+        <div key={plans.id}>          
+            <div className='card mb-2 shadow'>
                 <div className="card-header">
-                    <h6 className='text-center'>{plans.title}</h6>
+                    <h6 className=''>{plans.title}</h6>
                 </div>
                 <div className="card-body">
                     <Link to={`/plan/${plans.id}`} className=' nav-link text-dark'>

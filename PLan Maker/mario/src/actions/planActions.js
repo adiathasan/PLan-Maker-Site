@@ -1,6 +1,6 @@
 export const planCreater = (plan)=>{
     return (dispatch, getState, {getFirebase, getFirestore})=>{
-        // ajax here from DB
+        // ajax here from firebase
         const firestore = getFirestore()
         firestore.collection('plans').add({
             ...plan,

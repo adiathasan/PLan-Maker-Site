@@ -3,7 +3,7 @@ import React from 'react';
 
 const Notifications = ()=>{
     return (
-        <div className=' card'>
+        <div className=' card shadow'>
             <div className="card-header">
                 <h5>
                     Notifications
