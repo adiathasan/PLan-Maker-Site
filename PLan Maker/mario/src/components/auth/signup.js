@@ -41,7 +41,7 @@ export class SignUp extends Component {
                 (<div className='container mt-4'>
                     <h3 className='text-center border-bottom text-dark mb-4 p-2'>Sign Up</h3>
                     <div className="row">
-                        <div className="col-8 mx-auto bg-light p-3  rounded shadow">
+                        <div className="col-11 col-md-8 mx-auto bg-light p-3  rounded shadow">
                             <form className='p-4' onSubmit={this.handleSubmit}>
                                 <div className="form-group">
                                     <label htmlFor="firstname">First

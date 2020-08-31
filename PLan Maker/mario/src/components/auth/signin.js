@@ -29,7 +29,7 @@ export class SignIn extends Component {
             auth.isLoaded &&  (<div className='container mt-5'>
                 <h3 className='text-center border-bottom mb-5'>Sign In</h3>
                 <div className="row">
-                    <div className="col-8 mx-auto bg-light p-3  rounded shadow">
+                    <div className="col-11 col-md-8 mx-auto bg-light p-3  rounded shadow">
                         {
                             err ? (
                                 <div className="alert alert-danger">

@@ -38,7 +38,6 @@ const Nav = (props) =>{
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         auth: state.firebase.auth,
         usersId: state.firestore.ordered.users,

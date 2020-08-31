@@ -10,7 +10,6 @@ const initState = {
 const planReducer = (state=initState, action) =>{
     switch(action.type){
         case 'CREATE_PLAN':
-            console.log(state)
             return state
         case 'CREATE_PLAN_ERROR':
             console.log(action.type, action.err)

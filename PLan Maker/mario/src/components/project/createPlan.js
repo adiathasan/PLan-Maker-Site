@@ -26,10 +26,10 @@ export class CreatePlan extends Component {
         const {auth} = this.props
         if (!auth.uid) return <Redirect to='/login'/>
         return (
-            <div className='container mt-5'>
+            <div className='container-fluid container-md mt-5'>
                 <h3 className='text-center border-bottom mb-5'>Add Your Plan</h3>
                 <div className="row">
-                    <div className="col-8 mx-auto bg-light p-3  rounded shadow">
+                    <div className="col-11 col-md-8 mx-auto bg-light p-3  rounded shadow">
                         <form className='p-4' onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="title">title</label>
