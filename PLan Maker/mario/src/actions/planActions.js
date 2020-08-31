@@ -17,3 +17,17 @@ export const planCreater = (plan)=>{
         })
     }
 }
+
+export const planDeleter = id =>{
+
+    return (dispatch, getState, {getFirebase, getFirestore}) =>{
+        const firestore = getFirestore()
+        firestore.collection('plans').doc(id).delete()
+        .then(()=>{
+            dispatch({type: 'PLAN_DELETED'})
+        }).catch(err =>{
+            dispatch({type: 'PLAN_DELETE_ERROR', err})
+        })
+    }
+
+}

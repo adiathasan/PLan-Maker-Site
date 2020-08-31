@@ -4,10 +4,18 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import moment from 'moment'
+import { planDeleter } from '../../actions/planActions'
 
 function PlanDetail(props) {
-    const {plan, auth} = props
+    const handleDelete = e => {
+        props.planDeleteFunc(id)
+        props.history.push('/')
+    }
+    const {plan, auth, id} = props
     if (!auth.uid) return <Redirect to='/login' />
+    const btn = auth.uid == plan.authId ? 
+        (<button className=' btn btn-danger' onClick={handleDelete}>Delete plan</button>) : null
+
     if (plan){
         return (
             <div className='container m-5 mx-auto'>
@@ -28,7 +36,10 @@ function PlanDetail(props) {
                         <p className='text-muted'>Posted by  <span className='text-info'> {plan.authFirstName} {plan.authLastName}</span></p>
                         <p className='text-muted'>{moment(plan.createdAt.toDate()).calendar()}
                         </p>
-                    </div>
+                        {
+                            btn
+                        }
+                    </div> 
                 </div>
             </div>
         ) 
@@ -55,12 +66,19 @@ const mapStateToProps = (state, ownProps) =>{
     return {
         plan,
         auth: state.firebase.auth, 
-        profile: state.firebase.profile 
+        profile: state.firebase.profile, 
+        id,
     }
 } 
 
+const mapDispatchToProps = dispatch =>{
+    return {
+        planDeleteFunc: id => dispatch(planDeleter(id))
+    }
+}
+
 export default compose(
     firestoreConnect(() => ['plans']),
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
 
 )(PlanDetail)

@@ -1,8 +1,6 @@
 const initState = {
     plans: [
-        {id:1, title:'make the shit', content:'hululululu lkpas acnasd asdas casdjp'},
-        {id:2, title:'cock the shit', content:'hujlulululu hujkhjhjkhjk acnasd asdas casdjp'},
-        {id:3, title:'cum the meet', content:'hulusaedrfsdfs acnasd asdas casdjp'}
+       
     ]
 }
 
@@ -13,6 +11,10 @@ const planReducer = (state=initState, action) =>{
             return state
         case 'CREATE_PLAN_ERROR':
             console.log(action.type, action.err)
+        case 'PLAN_DELETE_ERROR':
+            console.log(action.type, action.err)
+        case 'PLAN_DELETED':
+            console.log(action.type)
         default:
             return state
     }
