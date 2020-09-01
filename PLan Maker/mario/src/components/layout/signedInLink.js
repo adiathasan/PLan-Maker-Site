@@ -11,7 +11,7 @@ const SignedInBar = (props) => {
     return (
             <ul className=" d-flex nav">
                 <li className="nav-item">
-                <NavLink className="nav-link text-light" to="/createPlan">Make Plane</NavLink>
+                <NavLink className="nav-link text-light" to="/createPlan">Make Plan</NavLink>
                 </li>
                 <li className="nav-item">
                 <a className="nav-link text-light" onClick={handleLogout}>Logout </a>
